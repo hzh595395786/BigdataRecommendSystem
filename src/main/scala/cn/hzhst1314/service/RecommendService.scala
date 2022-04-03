@@ -19,9 +19,9 @@ class RecommendService extends TService{
     // 数据清洗，只保留三列数据
     val ss = EnvUtil.take()
     import ss.implicits._
-    val ratingDS = frame.select( "user_id", "business_id", "stars")
+    val ratingDS = frame.select( "user_id", "business_id", "rating")
     val resDS = ratingDS.map(item => ReviewRating(
-      item.getInt(0), item.getInt(1), item.getFloat(2)
+      item.get(0).toString.toInt, item.get(1).toString.toInt, item.get(2).toString.toFloat
     ))
     // 训练模型
     ALSUtil.train(resDS)

@@ -3,7 +3,6 @@ package cn.hzhst1314.controller
 import cn.hzhst1314.common.TController
 import cn.hzhst1314.service.{DataCleanService, RecommendService}
 import cn.hzhst1314.util.ALSUtil
-import org.apache.spark.ml.recommendation.ALSModel
 
 
 class RecommendController extends TController{

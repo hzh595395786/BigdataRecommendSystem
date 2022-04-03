@@ -12,9 +12,9 @@ trait TApplication {
   private val CLUSTER_PATH = "spark://10.103.105.40:7077"
 
 
-  def start(master: String = LOCAL_PATH, app: String = "Application")(op: => Unit): Unit = {
+  def start(master: String = CLUSTER_PATH, app: String = "Application")(op: => Unit): Unit = {
     // op代表传入的一段代码逻辑
-    val sparkConf = new SparkConf().setMaster(master).setAppName(app).set("spark.executor.memory", "4g")
+    val sparkConf = new SparkConf().setMaster(master).setAppName(app).set("spark.executor.memory", "8g")
     val ss = SparkSession.builder().config(sparkConf).getOrCreate()
     // 放入sc
     EnvUtil.put(ss)
